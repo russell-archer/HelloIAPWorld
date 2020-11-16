@@ -14,17 +14,14 @@ The basic steps you need to take to support in-app purchases (IAP hereafter) in 
 ![](./readme-assets/purchase-flow.png)
 
 ## Create an IAP helper class
-
 Create a class or struct that will contain all your IAP-related code. For the sake of example we’ll refer to this as the **`IAPHelper`** code.
 
 ## Define your ProductIds
-
 Define a set of Strings that hold **ProductIds** for the products you want to sell. ProductIds are generally in reverse domain form (“com.your-company.your-product”). 
 
 For example, **`com.rarcher.flowers-large`**. These ids will match the product ids you define in App Store Connect.
 
 ## Add your `IAPHelper` to the Payment Queue
-
 To receive notifications from the App Store (when payments are successful, fail, are restored, etc.) add your IAPHelper to the StoreKit payment queue. This should be 
 done as soon as possible in the app’s lifecycle. 
 
@@ -35,25 +32,21 @@ SKPaymentQueue.default().add(iapHelper)
 ```
 
 ## Request localized product information from the App Store
-
 The **`SKProductsRequestDelegate`** method **`productsRequest(_:didReceive:)`** will be called asynchronously with a list of **`SKProduct`** objects. 
 Note that you can’t simply use predefined product data because you need to display prices, etc. that are *localized* for each user.
 
 ## Present the localized product list to the user and handle purchases
-
 When the user taps on “buy product” you should wrap the selected **`SKProduct`** in an **`SKPayment`** object, then add it to the **`SKPaymentQueue`**. 
 The App Store will then send notifications to the **`SKPaymentTransactionObserver`** method **`paymentQueue(_:updatedTransactions)`** as the purchase 
 progresses. Note that the App Store presents the user with all the required purchase prompts and confirmations.
 
 ## Process the App Store Receipt
-
 The App Store will create a new **receipt** when a purchase has been made or restored. The receipt is available when the **`paymentQueue(_:updatedTransactions)`** 
 method is called. This receipt, which is cryptographically signed and encrypted, contains a complete record of all the IAPs made by the user of your app.
 
-The code discussed in the [Hello IAP World]() example below provides a practical example of the above points.
+The code discussed in the **Hello IAP World** example below provides a practical example of the above points.
 
 # Xcode 12 Improvements
-
 ![](./readme-assets/wwdc-2020-large.jpg)
 
 Immediately before Apple’s WWDC 2020 keynote event I tweeted that I was hoping for something “magical and unexpected”. I followed this up with 
@@ -63,7 +56,7 @@ Well, I didn’t get my wish with regard to receipt validation, but I certainly 
 
 Starting with Xcode 12, there’s a new local **`StoreKit`** test environment that allows you to do early testing of IAPs in the simulator and without having to set 
 anything up in App Store Connect. You can define your products locally in a **`StoreKit` Configuration file**. Furthermore, you can view and delete transactions, 
-issue refunds, and a whole lot more. There’s also a new **`StoreKitTest`** framework that enables you to do automated testing of IAPs. The [Hello IAP World]() 
+issue refunds, and a whole lot more. There’s also a new **`StoreKitTest`** framework that enables you to do automated testing of IAPs. The **Hello IAP World** 
 project below includes details on how to create and use a StoreKit configuration file.
 
 ![](./readme-assets/iap1.jpg)
@@ -77,8 +70,6 @@ features in Xcode 12.
 Note that StoreKit testing requires **Xcode 12** and **iOS 14**.
 
 Although this is a bare-bones example, the project does demonstrate most of the essential requirements for handling in-app purchases in an iOS app.
-
-You can find the code for HelloIAPWorld [on GitHub](https://github.com/russell-archer/HelloIAPWorld).
 
 ![](./readme-assets/iap2.png)
 
@@ -100,7 +91,6 @@ For this example, we’ll assume you’re going to create a demo app from scratc
 - **Minimal IAPHelper Code**
 
 ## Create the App
-
 Create a new iOS app in Xcode named "HelloIAPWorld":
 
 ![](./readme-assets/iap3.png)
@@ -144,14 +134,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 ```
 
 ## Add the StoreKit Framework
-
 The first thing you need to do after creating your new app is to add the **StoreKit** framework. Select your app **Target** and the **General** tab, then add 
 the **`StoreKit`** framework:
 
 ![](./readme-assets/iap7.png)
 
 ## Create the StoreKit configuration file
-
 Now create a StoreKit configuration file. Select **File > New > File** and choose the **StoreKit Configuration File** template:
 
 ![](./readme-assets/iap8.jpg)
@@ -181,7 +169,6 @@ By default, the first localization is for the US store. However, you can add as 
 Note that none of the data defined in the .storekit file is ever uploaded to App Store Connect. It’s only used when testing in-app purchases locally in Xcode.
 
 ## Add the in-app purchase capability
-
 It’s easy to forget to do this! And you can successfully test in-app purchases *without* adding the IAP capability. However, you will receive the following error when 
 attempting to archive a project in preparation for uploading it to the App Store:
 
@@ -193,7 +180,6 @@ Add the in-app purchase capability by selecting the app target and **Signing & C
 ![](./readme-assets/iap12b.jpg)
 
 ## Enable StoreKit Testing via the Project Scheme
-
 You now need to enable StoreKit testing in Xcode (it’s disabled by default).
 
 Select **Product > Scheme > Edit Scheme**. Now select **Run** and the **Options** tab. You can now select your configuration file from the **StoreKit Configuration** list:
@@ -203,7 +189,6 @@ Select **Product > Scheme > Edit Scheme**. Now select **Run** and the **Options*
 Should you wish to disable StoreKit testing then repeat the above steps and remove the StoreKit configuration file from the **StoreKit Configuration** list.
 
 ## Add the StoreKit public certificate
-
 You need to add the StoreKit public test certificate to your project. This isn’t strictly necessary if you’re not going to be doing any receipt validation. 
 However, we’ll include the details here for completeness.
 
@@ -237,7 +222,6 @@ public struct IAPConstants {
 ```
 
 ## Minimal IAPHelper Code
-
 In this example we’ll put all IAP related code into a single **`IAPHelper`** class. We set this up as a singleton, ensuring there’s only ever a single instance of the class:
 
 ```swift
@@ -338,3 +322,26 @@ extension ViewController: ProductCellDelegate {
     }
 }
 ```
+
+## Running the app
+If you run the app you'll be able to tap on "buy" button and step through the purchase procedure:
+
+![](./readme-assets/demo.gif)
+
+While the app's running, click on the **Manage StoreKit Transactions** button in Xcode's console toolbar:
+
+![](./readme-assets/iap15.jpg)
+
+You'll see transactions for purchases you've made:
+
+![](./readme-assets/iap14.jpg)
+
+From the **Manage StoreKit Transaction** view you can select a transaction and then:
+
+- Approve a transaction (if it's pending parental approval)
+- Decline a transaction (if it's pending parental approval)
+- Issue a refund
+- Resolve transaction issues
+- Delete a transactions
+
+

@@ -30,6 +30,9 @@
 		685E79F62563314200DCDF8F /* iap1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E79E52563314200DCDF8F /* iap1.jpg */; };
 		685E79F72563314200DCDF8F /* iap13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E79E62563314200DCDF8F /* iap13.jpg */; };
 		685E79F82563314200DCDF8F /* iap2.png in Resources */ = {isa = PBXBuildFile; fileRef = 685E79E72563314200DCDF8F /* iap2.png */; };
+		685E79FB2563381100DCDF8F /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 685E79FA2563381000DCDF8F /* demo.gif */; };
+		685E79FF25633C6500DCDF8F /* iap14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E79FD25633C6500DCDF8F /* iap14.jpg */; };
+		685E7A0025633C6500DCDF8F /* iap15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 685E79FE25633C6500DCDF8F /* iap15.jpg */; };
 		68AAAE372562D9A8001FE33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAAE362562D9A8001FE33D /* AppDelegate.swift */; };
 		68AAAE392562D9A8001FE33D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAAE382562D9A8001FE33D /* SceneDelegate.swift */; };
 		68AAAE3B2562D9A8001FE33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AAAE3A2562D9A8001FE33D /* ViewController.swift */; };
@@ -64,6 +67,9 @@
 		685E79E52563314200DCDF8F /* iap1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iap1.jpg; sourceTree = "<group>"; };
 		685E79E62563314200DCDF8F /* iap13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iap13.jpg; sourceTree = "<group>"; };
 		685E79E72563314200DCDF8F /* iap2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iap2.png; sourceTree = "<group>"; };
+		685E79FA2563381000DCDF8F /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
+		685E79FD25633C6500DCDF8F /* iap14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iap14.jpg; sourceTree = "<group>"; };
+		685E79FE25633C6500DCDF8F /* iap15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iap15.jpg; sourceTree = "<group>"; };
 		68AAAE332562D9A8001FE33D /* HelloIAPWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloIAPWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68AAAE362562D9A8001FE33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68AAAE382562D9A8001FE33D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 		681D712D2562FD3B00330313 /* readme-assets */ = {
 			isa = PBXGroup;
 			children = (
+				685E79FA2563381000DCDF8F /* demo.gif */,
 				685E79E52563314200DCDF8F /* iap1.jpg */,
 				685E79E72563314200DCDF8F /* iap2.png */,
 				685E79DD2563314100DCDF8F /* iap3.png */,
@@ -105,6 +112,8 @@
 				685E79DC2563314100DCDF8F /* iap12a.png */,
 				685E79D92563314100DCDF8F /* iap12b.jpg */,
 				685E79E62563314200DCDF8F /* iap13.jpg */,
+				685E79FD25633C6500DCDF8F /* iap14.jpg */,
+				685E79FE25633C6500DCDF8F /* iap15.jpg */,
 				685E79DF2563314100DCDF8F /* mindmap.png */,
 				685E79D72563314100DCDF8F /* purchase-flow.png */,
 				685E79DB2563314100DCDF8F /* wwdc-2020-large.jpg */,
@@ -225,9 +234,12 @@
 				685E79F42563314200DCDF8F /* iap9.jpg in Resources */,
 				68AAAE432562D9AA001FE33D /* LaunchScreen.storyboard in Resources */,
 				685E79F62563314200DCDF8F /* iap1.jpg in Resources */,
+				685E7A0025633C6500DCDF8F /* iap15.jpg in Resources */,
 				685E79F82563314200DCDF8F /* iap2.png in Resources */,
+				685E79FB2563381100DCDF8F /* demo.gif in Resources */,
 				685E79F02563314200DCDF8F /* mindmap.png in Resources */,
 				685E79EC2563314200DCDF8F /* wwdc-2020-large.jpg in Resources */,
+				685E79FF25633C6500DCDF8F /* iap14.jpg in Resources */,
 				685E79EF2563314200DCDF8F /* iap4.png in Resources */,
 				685E79F22563314200DCDF8F /* iap11.jpg in Resources */,
 				68AAAE402562D9AA001FE33D /* Assets.xcassets in Resources */,
