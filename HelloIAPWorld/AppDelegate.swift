@@ -10,11 +10,16 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    public var iapHelper: IAPHelper!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Make sure the IAPHelper is initialized early in the app's lifecycle to ensure we don't miss any App Store notifications
+        iapHelper = IAPHelper.shared
         return true
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        iapHelper.removeFromPaymentQueue()
     }
 
     // MARK: UISceneSession Lifecycle
