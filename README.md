@@ -4,6 +4,9 @@ A very minimal app to demo IAP testing in Xcode 12 and iOS14
 This iOS 14/Xcode 12 app presents a minimal exploration of what's required to support in-app purchases. For a more detailed treatment of in-app purchases 
 see [https://github.com/russell-archer/IAPTestingDemo](https://github.com/russell-archer/IAPTestingDemo).
 
+- **Disclaimer**. The source code presented here is for educational purposes. You may freely reuse and amend this code for use in your own apps. 
+However, you do so entirely at your own risk.
+
 # Overview
 There are a lot of pieces that fit together to enable you to support in-app purchases in your app:
 
@@ -342,6 +345,6 @@ From the **Manage StoreKit Transaction** view you can select a transaction and t
 - Decline a transaction (if it's pending parental approval)
 - Issue a refund
 - Resolve transaction issues
-- Delete a transactions
+- Delete a transaction
 
 
