@@ -50,6 +50,13 @@
             ReferencedContainer = "container:HelloIAPWorld.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "enable"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../HelloIAPWorld/Configuration.storekit">
       </StoreKitConfigurationFileReference>

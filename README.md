@@ -341,10 +341,14 @@ You'll see transactions for purchases you've made:
 
 From the **Manage StoreKit Transaction** view you can select a transaction and then:
 
-- Approve a transaction (if it's pending parental approval)
-- Decline a transaction (if it's pending parental approval)
-- Issue a refund
-- Resolve transaction issues
-- Delete a transaction
+- **Approve** a transaction (if it's pending parental approval)
+- **Decline** a transaction (if it's pending parental approval)
+- Issue a **refund**
+- **Resolve** transaction issues
+- **Delete** a transaction
 
+The ability to **delete** transactions is a huge boast to productivity! Previously, when working with App Store Connect sandbox accounts you could 
+test purchase a product once. If you wanted to test purchasing the same product again you'd have to create a new sandbox account, complete with 
+Apple ID, email, etc.
 
+For a more detailed treatment of in-app purchases see [https://github.com/russell-archer/IAPTestingDemo](https://github.com/russell-archer/IAPTestingDemo).

@@ -91,8 +91,8 @@ public class IAPHelper: NSObject  {
         purchaseCompletion = completion  // Save the completion block for later use
         isPurchasing = true
         
-        let payment = SKPayment(product: product)  // Wrap the SKProduct in an SKPayment object
-        SKPaymentQueue.default().add(payment)
+        // Wrap the SKProduct in an SKPayment object
+        SKPaymentQueue.default().add(SKPayment(product: product))
     }
     
     /// The Apple ID of some users (e.g. children) may not have permission to make purchases from the app store.
@@ -218,7 +218,9 @@ extension IAPHelper: SKProductsRequestDelegate {
 extension IAPHelper: SKRequestDelegate {
     
     /// This method is called for both SKProductsRequest (request product info) and
-    /// SKRequest (request receipt refresh).
+    /// SKRequest (request receipt refresh - ignored in this demo).
+    /// - Parameters:
+    ///   - request:    The request object.
     public func requestDidFinish(_ request: SKRequest) {
 
         if productsRequest != nil {
