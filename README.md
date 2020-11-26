@@ -2,7 +2,7 @@
 A very minimal app to demo IAP testing in Xcode 12 and iOS14
 
 This iOS 14/Xcode 12 app presents a minimal exploration of what's required to support in-app purchases. 
-For a more detailed treatment of in-app purchases, including how do acomplish receipt validation 
+For a more detailed treatment of in-app purchases, including how to carry out receipt validation 
 see [https://github.com/russell-archer/IAPDemo](https://github.com/russell-archer/IAPDemo).
 
 **Disclaimer**. The source code presented here is for educational purposes. You may freely reuse and amend this code for use in your own apps. 
@@ -417,15 +417,12 @@ class ViewController: UIViewController {
         configureProducts()
     }
     
-    func configureProducts() {
+    private func configureProducts() {
+        // Ask the App Store for a list of localized products
         iap.requestProductsFromAppStore { notification in
             
-            if notification == IAPNotification.requestProductsSuccess {
-                
-                self.iap.processReceipt()  // Validate the receipt
-                
-                // Update the UI with product info
-            }
+            print(notification)
+            if notification == .requestProductsDidFinish { self.tableView.reloadData() }
         }
     }
 }
@@ -439,26 +436,25 @@ extension ViewController: ProductCellDelegate {
     internal func requestBuyProduct(productId: ProductId) {
         guard let product = iap.getStoreProductFrom(id: productId) else { return }
         
+        // Start the process to purchase the product
         iap.buyProduct(product) { notification in
             switch notification {
             case .purchaseAbortPurchaseInProgress: 
-                IAPLog.event("Purchase aborted because another purchase is being processed")
+                print("Purchase aborted because another purchase is being processed")
+                
+            case .purchaseCompleted(productId: let pid): 
+                print("Purchase completed for product \(pid)")
                 
             case .purchaseCancelled(productId: let pid): 
-                IAPLog.event("Purchase cancelled for product \(pid)")
+                print("Purchase cancelled for product \(pid)")
                 
-            case .purchaseFailure(productId: let pid): 
-                IAPLog.event("Purchase failure for product \(pid)")
+            case .purchaseFailed(productId: let pid): 
+                print("Purchase failed for product \(pid)")
                 
-            case .purchaseSuccess(productId: let pid):
-                
-                IAPLog.event("Purchase success for product \(pid)")
-                self.iap.processReceipt()  // Validate the new receipt
-            
             default: break
             }
             
-            // Update the UI
+            self.tableView.reloadData()
         }
     }
 }
@@ -489,3 +485,5 @@ The ability to **delete** transactions is a huge boast to productivity! Previous
 test purchase a product once. If you wanted to test purchasing the same product again you'd have to create a new sandbox account, complete with 
 Apple ID, email, etc.
 
+For a more detailed treatment of in-app purchases, including how to carry out receipt validation 
+see [https://github.com/russell-archer/IAPDemo](https://github.com/russell-archer/IAPDemo).
